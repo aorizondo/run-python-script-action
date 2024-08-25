@@ -25,6 +25,7 @@ jobs:
           python-version: '3.x'
       - uses: jannekem/run-python-script-action@v1
         with:
+          python-binary: 'python3'
           script: |
             import os
             print("Directory contents:")
