@@ -1,6 +1,10 @@
 name: "Run Python Script"
 description: "Run a custom python snippet inside a workflow file"
 inputs:
+  python-binary:
+    default: "python3"
+    description: "Python executable"
+    required: true
   script:
     description: "Python script"
     required: true
