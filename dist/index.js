@@ -8670,6 +8670,7 @@ async function run() {
     const script = core.getInput("script");
     const util = core.getInput("util") === "true";
     const failOnError = core.getInput("fail-on-error") === "true";
+    const pythonBin = core.getInput("python-binary");
     const utilityFunctions = fs.readFileSync(`${__dirname}/util.py`);
 
     let stdout = "";
@@ -8689,7 +8690,7 @@ async function run() {
     const filename = tmp.tmpNameSync({postfix: '.py'});
     fs.writeFileSync(filename, util ? utilityFunctions + script : script);
     try {
-        await exec.exec('python', [filename], options);
+        await exec.exec(pythonBin, [filename], options);
     } catch (error) {
         errorStatus = "true";
         if (failOnError) {
